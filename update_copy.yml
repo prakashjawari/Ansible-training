@@ -1,0 +1,17 @@
+- name: Updating a index.html
+  hosts: web
+  tasks:
+    - name: Updating a index.htm
+      lineinfile: 
+        state: present 
+        dest: /opt/index.html 
+        line: '<html><h1> Welcome to HP Ansible class </h1></html>'
+
+- name: Copy Index file to the /var/www/html
+  hosts: web
+  tasks:
+    - name: Copy index file to the http directory
+      copy: 
+        src: /opt/index.html 
+        dest: /var/www/html
+

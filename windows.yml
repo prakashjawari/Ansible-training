@@ -1,0 +1,31 @@
+---
+- name: Create a group
+  hosts: multi
+  tasks:
+    - name: Create a directory on windows
+      win_file: path=C:\\hp\\jawari state=directory 
+    - name: Create a file on windows
+      win_file: path=C:\\hp\\jawari\\index.html state=touch
+    - name: Create a file on windows
+      win_lineinfile:
+        state: present
+        dest: C:\\hp\\jawari\\index.html
+        line: '<html><h1> I am an window machine</h1></html>'
+      when:
+        - ansible_facts['os_family'] != "RedHat"
+- name: Updating a index.html
+  hosts: multi
+  tasks:
+    - name: Updating a index.htm
+      lineinfile:
+        state: present
+        dest: /opt/index.html
+        line: '<html><h1> THIS is a Linux machine </h1></html>'
+    - name: Copy index file to the http directory
+      copy:
+        src: /opt/index.html
+        dest: /var/www/html
+      when: 
+        - ansible_facts['os_family'] == "RedHat"
+...
+

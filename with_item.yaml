@@ -1,0 +1,18 @@
+---
+- name: Ansible to include with items to display
+  hosts: localhost
+  tasks:
+    - name: Ansible register with_items variable.
+      shell: "find *.txt" 
+      args:
+        chdir: /root/Training/group_vars
+      register: with_output
+    - debug: 
+        msg: "Output is {{ with_output }}"
+    - shell: "cp {{ item }} {{ item }}_bkp"
+      args:
+        chdir: /root/Training/group_vars
+#    - shell: "echo {{ item }}"
+      with_items:
+        - "{{ with_output.stdout_lines }}"
+...

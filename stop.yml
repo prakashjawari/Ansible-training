@@ -1,0 +1,9 @@
+---
+- name: Start http service on multiple machine
+  hosts: web
+  tasks:
+    - name: starting a web
+      service: 
+        name: httpd 
+        state: stopped
+...

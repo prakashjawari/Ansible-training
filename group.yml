@@ -1,0 +1,7 @@
+- name: Create a group
+  hosts: web
+  tasks:
+    - name: Create a group for test-deploy
+      group: 
+        name: test-deploy
+

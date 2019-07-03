@@ -1,0 +1,9 @@
+---
+  - name: Ansible to include with items to display
+    hosts: localhost
+    tasks:
+      - debug:
+          msg: "IN the parent yml"
+
+  - import_playbook: debug_var.yml
+...

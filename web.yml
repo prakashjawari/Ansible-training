@@ -1,0 +1,43 @@
+---
+- name: Create a group
+  hosts: web
+  tasks:
+    - name: Create a group for test-deploy
+      group: name=test-deploy
+
+- name: Creating a User for group test-deploy
+  hosts: web
+  tasks:
+    - name: Creating a user test for test-deploy group
+      user: name=test group=test-deploy shell=/bin/bash state=present
+
+- name: Creating a file index.xml from user test 
+  hosts: web
+  tasks:
+    - name: Creating a index.html for testing a web service
+      file: dest=/opt/index.html mode=755 state=touch
+
+- name: Updating a index.html 
+  hosts: web
+  tasks:
+    - name: Updating a index.htm
+      lineinfile: state=present dest=/opt/index.html line='<html><h1> Welcome to HP Ansible class </h1></html>'
+
+- name: Copy Index file to the /var/www/html
+  hosts: web
+  tasks:
+    - name: Copy index file to the http directory
+      copy: src=/opt/index.html dest=/var/www/html
+
+- name: Installing git and wget 
+  hosts: web
+  tasks:
+    - name: Installing wget and git
+      yum: name=wget state=present name=git state=present
+
+- name: Start http service on multiple machine
+  hosts: web
+  tasks: 
+    - name: starting a web
+      service: name=httpd state=started
+...

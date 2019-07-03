@@ -1,0 +1,10 @@
+---
+- name: Creating a file index.xml from user test
+  hosts: web
+  tasks:
+    - name: Creating a index.html for testing a web service
+      file: 
+        dest: /opt/index.html 
+        mode: 755 
+        state: touch
+...

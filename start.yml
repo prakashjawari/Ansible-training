@@ -1,0 +1,25 @@
+---
+- name: Start http service on multiple machine
+  hosts: web
+#  vars:
+#    myname: "Prakash-Playbook"
+#    mycomponay: "HPE-Playbook"
+#  vars_files:
+#    - "var.yml"
+  vars_prompt:
+    - name: myname
+      private: no
+      prompt: "what is my name?"
+  tasks:
+    - name: starting a web
+      service: 
+        name: httpd 
+        state: started
+    - debug: msg="At debug line {{ mycomponay }}-line"
+    - debug: msg={{ mycomponay }}
+    - debug: 
+        msg: "{{ mycomponay }}"
+    - debug:
+        msg: Myname is {{ myname }} and my company is {{ mycomponay }}
+#        var: mycomponay
+...

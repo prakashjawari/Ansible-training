@@ -1,0 +1,11 @@
+---
+- name: Creating a User for group test-deploy
+  hosts: web
+  tasks:
+    - name: Creating a user test for test-deploy group
+      user: 
+        name: test 
+        group: test-deploy 
+        shell: /bin/bash 
+        state: present
+...

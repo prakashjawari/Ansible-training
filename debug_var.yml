@@ -1,0 +1,24 @@
+---
+  - name: Debug message understanding yml
+    hosts: common
+  #  vars:
+  #    myname: "Prakash-Playbook"
+  #    mycomponay: "HPE-Playbook"
+  #  vars_files:
+  #    - "vars.yml"
+  #  vars_prompt:
+  #    - name: myname
+  #      private: no
+  #      prompt: "what is my name?"
+  #    - name: include default variables
+  #      include_vars: var.yml 
+
+    tasks:
+      - debug: msg="At debug line {{ mycomponay }}-line"
+      - debug: msg={{ mycomponay }}
+      - debug: 
+          msg: "{{ mycomponay }}"
+      - debug:
+          msg: Myname is {{ myname }} and my company is {{ mycomponay }}
+  #        var: mycomponay
+...

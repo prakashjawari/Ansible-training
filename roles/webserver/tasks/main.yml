@@ -1,2 +1,8 @@
 ---
 # tasks file for webserver
+ - name: starting a web
+   yum: name=httpd state=present
+
+ - name: starting a web
+   service: name=httpd state=started
+

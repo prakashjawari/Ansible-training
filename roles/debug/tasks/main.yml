@@ -1,0 +1,9 @@
+---
+# tasks file for debug
+- debug: msg="At debug line {{ mycomponay }}-line"
+- debug: msg={{ mycomponay }}
+- debug:
+    msg: "{{ mycomponay }}"
+- debug:
+    msg: Myname is {{ myname }} and my company is {{ mycomponay }}
+

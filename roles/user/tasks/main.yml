@@ -1,0 +1,9 @@
+---
+# tasks file for user
+- name: Creating a user test for test-deploy group
+  user:
+    name: test1
+    group: test1-deploy
+    shell: /bin/bash
+    state: present
+

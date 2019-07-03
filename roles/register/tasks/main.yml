@@ -1,0 +1,10 @@
+---
+# tasks file for register
+- name: Ansible register variable basic.
+  shell: "find *.txt"
+  args:
+    chdir: group_vars
+  register: find_output
+- debug:
+    msg: Files found in {{ find_output }}
+

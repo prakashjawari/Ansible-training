@@ -1,0 +1,6 @@
+---
+# tasks file for group
+- name: Create a group for test-deploy
+  group:
+    name: test1-deploy
+

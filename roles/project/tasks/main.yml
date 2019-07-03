@@ -1,0 +1,28 @@
+---
+# tasks file for project
+- name: Ensure that Apache is installed
+  yum: name={{ pkg }} state=present
+  when: ansible_os_family == "RedHat"
+
+#- name: Execute shell script
+#  shell: "sh test.sh"
+#  args: 
+#    chdir: roles/project/files
+#  register: echo_output
+#  lineinfile:
+#    state: present
+#    dest: templates/index.j2
+#    line: "echo_output"
+     
+- name: Copy Site index fileFiles
+  template: src=index.j2 dest={{ doc_root }}/index.html
+
+- name: Copy Site httpd conf fileFiles
+  template: src=httpd.j2 dest=/etc/httpd/conf/httpd.conf
+  notify:
+    - Restart Apache
+
+- name: Start Apache Services
+  service: name={{ pkg }} enabled=yes state=started
+
+

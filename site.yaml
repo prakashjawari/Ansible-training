@@ -1,0 +1,10 @@
+---
+- hosts: common
+  roles:
+    - role: project
+...
+#    - role: webserver
+#    - role: group
+#    - role: user
+#    - role: debug
+#    - role: register

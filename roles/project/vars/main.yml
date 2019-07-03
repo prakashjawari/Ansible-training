@@ -1,0 +1,6 @@
+---
+# vars file for project
+myname: "Prakash-IncludeVar"
+mycomponay: "HPE-Includevar"
+pkg: httpd
+doc_root: /var/www/html
